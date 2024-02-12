@@ -1,8 +1,71 @@
-<nav class="_nav navbar">
+<nav class="navbar">
     <div class="container">
-        <a href="" class="_logo_link d-flex align-items-center">
-            <i class="_logo_icon bi bi-currency-exchange me-2 fs-2"></i>
-            <span class="_logo_txt fs-5">CurrencyConverter</span>
+        <a href="" class="d-flex align-items-center text-white">
+            <i class="bi bi-currency-exchange me-2 fs-2"></i>
+            <span class="fs-5">CurrencyConverter</span>
         </a>
     </div>
 </nav>
+
+<div class="container mt-5 text-center text-white">
+    <h1 class="fw-bold fs-2">Trusted Global Currency Converter</h1>
+    <p>Best source for currency conversion and tracking exchange rates</p>
+</div>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header border-0 p-0 bg-transparent">
+            <ul class="nav nav-fill">
+                <li class="nav-item">
+                    <a class="convert-link nav-link py-3 active" href=""><i class="bi bi-cash-coin me-3"></i>Convert</a>
+                </li>
+                <li class="nav-item">
+                    <a class="charts-link py-3 nav-link" href=""><i class="bi bi-graph-down me-3"></i>Charts</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body p-5">
+            <div class="row">
+                <div class="col-sm-4" style="border: 1px solid grey;">Amount</div>
+                <div class="col-sm" style="border: 1px solid grey;">From</div>
+                <div style="border: 1px solid grey; width: 100px;">+</div>
+                <div class="col-sm" style="border: 1px solid grey;">To</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* resolve border overlapping */
+    .nav,
+    .nav-item {
+        border-radius: inherit;
+    }
+
+    .convert-link {
+        border-top-left-radius: inherit;
+    }
+
+    .charts-link {
+        border-top-right-radius: inherit;
+    }
+
+    .nav-link {
+        background-color: var(--bs-gray-200);
+        color: var(--bs-gray-700);
+    }
+
+    .nav-link.active {
+        background-color: white;
+        color: var(--bs-blue);
+        font-weight: 600;
+    }
+
+    .nav-link:hover {
+        opacity: 50%;
+    }
+
+    .nav-link>.bi {
+        color: inherit;
+    }
+</style>
