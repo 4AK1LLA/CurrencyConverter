@@ -8,6 +8,11 @@ namespace CurrencyConverterAPI
         public DbSet<Currency>? Currencies { get; set; }
         public DbSet<Rate>? Rates { get; set; }
 
-        public CurrencyRatesDbContext(DbContextOptions options) : base(options) { }
+        public CurrencyRatesDbContext(DbContextOptions options, ILogger<CurrencyRatesDbContext> logger) : base(options) {
+            if (Database.EnsureCreated())
+            {
+                logger.LogInformation("Database was created since it did not exist");
+            }
+        }
     }
 }

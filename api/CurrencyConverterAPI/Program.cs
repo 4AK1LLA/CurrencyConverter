@@ -21,6 +21,8 @@ builder.Services.AddDbContext<CurrencyRatesDbContext>(options =>
     }
 });
 
+builder.Services.AddScoped<CurencyRatesService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,5 +33,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapGet("/currencies", (CurencyRatesService service) => service.getAllCurrencies());
 
 app.Run();
