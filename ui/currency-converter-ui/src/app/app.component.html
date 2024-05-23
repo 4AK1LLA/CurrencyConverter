@@ -25,11 +25,31 @@
             </ul>
         </div>
         <div class="card-body p-5">
-            <div class="row">
-                <div class="col-sm-4" style="border: 1px solid grey;">Amount</div>
-                <div class="col-sm" style="border: 1px solid grey;">From</div>
-                <div style="border: 1px solid grey; width: 100px;">+</div>
-                <div class="col-sm" style="border: 1px solid grey;">To</div>
+            <div class="row align-items-center">
+                <div class="col-sm-4">
+                    <label for="amount" class="form-label">Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="text" class="form-control" id="amount" value="1.00">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <label for="from" class="form-label">From</label>
+                    <select class="form-select" id="from">
+                        <option selected>USD - US Dollar</option>
+                    </select>
+                </div>
+                <div class="col-sm-auto">
+                    <button class="rounded-circle" style="width: 50px; height: 50px;">
+                        <i class="bi bi-arrow-left-right"></i>
+                    </button>
+                </div>
+                <div class="col-sm">
+                    <label for="to" class="form-label">To</label>
+                    <select class="form-select" id="to">
+                        <option selected>EUR - Euro</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
