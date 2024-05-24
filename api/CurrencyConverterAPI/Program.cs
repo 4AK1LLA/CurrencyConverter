@@ -21,7 +21,7 @@ builder.Services.AddDbContext<CurrencyRatesDbContext>(options =>
     }
 });
 
-builder.Services.AddScoped<CurencyRatesService>();
+builder.Services.AddScoped<CurrencyRatesService>();
 
 var app = builder.Build();
 
@@ -34,8 +34,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/currencies", (CurencyRatesService service) => service.GetAllCurrencies());
+app.MapGet("/currencies", (CurrencyRatesService service) => service.GetAllCurrencies());
 
-app.MapGet("/convert", (int fromId, int toId, double amount, CurencyRatesService service) => service.Convert(fromId, toId, amount));
+app.MapGet("/convert", (int fromId, int toId, double amount, CurrencyRatesService service) => service.Convert(fromId, toId, amount));
 
 app.Run();

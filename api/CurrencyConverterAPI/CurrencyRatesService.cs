@@ -2,12 +2,12 @@
 
 namespace CurrencyConverterAPI
 {
-    public class CurencyRatesService
+    public class CurrencyRatesService
     {
         private readonly CurrencyRatesDbContext _context;
-        private readonly ILogger<CurencyRatesService> _logger;
+        private readonly ILogger<CurrencyRatesService> _logger;
 
-        public CurencyRatesService(CurrencyRatesDbContext context, ILogger<CurencyRatesService> logger)
+        public CurrencyRatesService(CurrencyRatesDbContext context, ILogger<CurrencyRatesService> logger)
         {
             _context = context;
             _logger = logger;
@@ -33,24 +33,22 @@ namespace CurrencyConverterAPI
                 throw new ArgumentException("Amount must be a positive number");
             }
 
-            double fromRate = GetLatestRate(from);
-            double toRate = GetLatestRate(to);
+            double fromRate = GetRateForDate(from, DateTime.Now);
+            double toRate = GetRateForDate(to, DateTime.Now);
 
             return amount / toRate * fromRate;
         }
 
-        public double GetLatestRate(Currency currency)
+        public double GetRateForDate(Currency currency, DateTime date)
         {
-            DateTime maxDate = _context.Rates
-                .Where(rate => rate.Currency.CurrencyId == currency.CurrencyId)
-                .Max(rate => rate.Date);
-
             Rate rate = _context.Rates
-                .FirstOrDefault(rate => rate.Date == maxDate && rate.Currency.CurrencyId == currency.CurrencyId);
+                .Where(rate => rate.Currency.CurrencyId == currency.CurrencyId && rate.Date <= date)
+                .OrderByDescending(rate => rate.Date)
+                .FirstOrDefault();
 
             if (rate == null)
             {
-                throw new Exception($"Latest rate not found for currency {currency.Code}");
+                throw new Exception($"Rate not found for currency {currency.Code} and date {date}");
             }
 
             return rate.RateToBase;
