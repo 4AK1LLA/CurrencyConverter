@@ -22,6 +22,7 @@ builder.Services.AddDbContext<CurrencyRatesDbContext>(options =>
 });
 
 builder.Services.AddScoped<CurrencyRatesService>();
+builder.Services.AddScoped<ChartService>();
 
 var app = builder.Build();
 
@@ -37,5 +38,7 @@ app.UseHttpsRedirection();
 app.MapGet("/currencies", (CurrencyRatesService service) => service.GetAllCurrencies());
 
 app.MapGet("/convert", (int fromId, int toId, double amount, CurrencyRatesService service) => service.Convert(fromId, toId, amount));
+
+app.MapGet("/chart", (int fromId, int toId, string period, ChartService service) => service.GetChart(fromId, toId, period));
 
 app.Run();
