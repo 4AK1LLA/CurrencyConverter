@@ -9,12 +9,23 @@
         symbol: €
     UAH:
         display-name: "Ukrainian Hryvnia"
-        description: "Ukrainian Hryvnia"
+        description: "The hryvnia has been the national currency of Ukraine since 2 September 1996. The hryvnia is divided into 100 kopiyok. It is named after a measure of weight used in Kievan Rus'."
         symbol: ₴
+    BTC:
+        display-name: "Bitcoin"
+        description: "Bitcoin (BTC) is a cryptocurrency (a virtual currency) designed to act as money and a form of payment outside the control of any one person, group, or entity. This removes the need for trusted third-party involvement (e.g., a mint or bank) in financial transactions."
+        symbol: ₿
 
-#rates:
-#  - date: "23.05.2024 18:00:00"
-#    values:
-#        USD: 1
-#        EUR: 1.08
-#        UAH: 0.02
+rates:
+  - date: "23.05.2024 18:00:00"
+    values:
+        USD: 1
+        EUR: 1.0834255
+        UAH: 0.0234246
+        BTC: 67411.20
+  - date: "24.05.2024 15:00:00"
+    values:
+        USD: 1
+        EUR: 1.0843244
+        UAH: 0.0245345
+        BTC: 66320.89
