@@ -5,6 +5,6 @@
         public int RateId { get; set; }
         public double RateToBase { get; set; }
         public DateTime Date { get; set; }
-        public Currency? Currency { get; set; }
+        public Currency Currency { get; set; }
     }
 }

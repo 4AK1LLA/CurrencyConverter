@@ -27,7 +27,7 @@ namespace CurrencyConverterAPI
 
                 foreach (var currency in yaml.Currencies)
                 {
-                    context.Currencies!.Add(new Currency
+                    context.Currencies.Add(new Currency
                     {
                         Code = currency.Key,
                         DisplayName = currency.Value.DisplayName,
@@ -42,7 +42,7 @@ namespace CurrencyConverterAPI
                 {
                     foreach (var value in rate.Values)
                     {
-                        var currency = context.Currencies!.FirstOrDefault(c => c.Code == value.Key);
+                        var currency = context.Currencies.FirstOrDefault(c => c.Code == value.Key);
 
                         if (currency == null)
                         {
@@ -50,7 +50,7 @@ namespace CurrencyConverterAPI
                             continue;
                         }
 
-                        context.Rates!.Add(new Rate()
+                        context.Rates.Add(new Rate()
                         {
                             Currency = currency,
                             Date = rate.Date,
@@ -64,7 +64,6 @@ namespace CurrencyConverterAPI
         }
     }
 
-#nullable disable
     public class YamlModel
     {
         public Dictionary<string, CurrencyDetail> Currencies { get; set; }

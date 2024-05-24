@@ -58,7 +58,7 @@ namespace CurrencyConverterAPI
 
         public IList<Currency> GetAllCurrencies()
         {
-            return _context.Currencies!.ToList();
+            return _context.Currencies.ToList();
         }
     }
 }
