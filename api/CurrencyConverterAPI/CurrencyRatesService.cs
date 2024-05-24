@@ -23,6 +23,11 @@ namespace CurrencyConverterAPI
 
         public double Convert(Currency from, Currency to, double amount)
         {
+            return Convert(from, to, amount, DateTime.Now);
+        }
+
+        public double Convert(Currency from, Currency to, double amount, DateTime date)
+        {
             if (from == null || to == null)
             {
                 throw new ArgumentNullException("Both 'from' and 'to' currencies must be provided");
@@ -33,8 +38,8 @@ namespace CurrencyConverterAPI
                 throw new ArgumentException("Amount must be a positive number");
             }
 
-            double fromRate = GetRateForDate(from, DateTime.Now);
-            double toRate = GetRateForDate(to, DateTime.Now);
+            double fromRate = GetRateForDate(from, date);
+            double toRate = GetRateForDate(to, date);
 
             return amount / toRate * fromRate;
         }
