@@ -1,0 +1,20 @@
+﻿currencies:
+    USD:
+        display-name: "US Dollar"
+        description: "The US Dollar is the most commonly converted currency in the world and is regularly used as a benchmark in the Forex market. As the dominant global reserve currency, it is held by nearly every central bank in the world. Additionally, the Dollar is used as the standard currency in the commodity market and therefore has a direct impact on commodity prices."
+        symbol: $
+    EUR:
+        display-name: "Euro"
+        description: "On January 1, 1999, the Euro (EUR) was introduced as an account currency, replacing the European Currency Unit at par. The European Currency Unit was a theoretical basket of currencies rather than a physical currency in and of itself. Initially, eleven of the countries in the European Economic and Monetary Union replaced their own currencies with the Euro: Austria, Belgium, Finland, France, Germany, Ireland, Italy, Luxembourg, the Netherlands, Portugal, and Spain. Greece followed suit in 2001, Slovenia in 2007, Malta and Cyprus in 2008, Slovakia in 2009 and Latvia in 2014."
+        symbol: €
+    UAH:
+        display-name: "Ukrainian Hryvnia"
+        description: "Ukrainian Hryvnia"
+        symbol: ₴
+
+#rates:
+#  - date: "23.05.2024 18:00:00"
+#    values:
+#        USD: 1
+#        EUR: 1.08
+#        UAH: 0.02

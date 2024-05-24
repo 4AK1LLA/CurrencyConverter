@@ -13,6 +13,12 @@ namespace CurrencyConverterAPI
             {
                 logger.LogInformation("Database was created since it did not exist");
             }
+
+            if (Currencies!.Count() == 0 && Rates!.Count() == 0)
+            {
+                logger.LogInformation("Database has no records, starting data seed");
+                this.Seed(logger);
+            }
         }
     }
 }
