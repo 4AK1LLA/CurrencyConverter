@@ -34,6 +34,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/currencies", (CurencyRatesService service) => service.getAllCurrencies());
+app.MapGet("/currencies", (CurencyRatesService service) => service.GetAllCurrencies());
+
+app.MapGet("/convert", (int fromId, int toId, double amount, CurencyRatesService service) => service.Convert(fromId, toId, amount));
 
 app.Run();
