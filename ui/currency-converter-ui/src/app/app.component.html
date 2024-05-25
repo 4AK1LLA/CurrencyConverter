@@ -1,11 +1,11 @@
-<nav class="navbar">
+<!-- <nav class="navbar">
     <div class="container">
         <a href="" class="d-flex align-items-center text-white">
             <i class="bi bi-currency-exchange me-2 fs-2"></i>
             <span class="fs-5">CurrencyConverter</span>
         </a>
     </div>
-</nav>
+</nav> -->
 
 <div class="container mt-5 text-center text-white">
     <h1 class="fw-bold fs-2">Trusted Global Currency Converter</h1>
@@ -35,9 +35,15 @@
                 </div>
                 <div class="col-sm">
                     <label for="from" class="form-label">From</label>
-                    <select class="form-select" id="from">
-                        <option selected>USD - US Dollar</option>
-                    </select>
+                    <input type="text" class="my-currency-input form-control" id="from" data-bs-toggle="dropdown">
+                    <div class="dropdown">
+                        <ul class="dropdown-menu w-100">
+                            <li><a class="dropdown-item">USD - US Dollar</a></li>
+                            <li><a class="dropdown-item">EUR - EURO</a></li>
+                            <li><a class="dropdown-item">UAH - Ukrainian Hryvnia</a></li>
+                            <li><a class="dropdown-item">BTC - Bitcoin</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-sm-auto">
                     <button class="rounded-circle" style="width: 50px; height: 50px;">
@@ -46,9 +52,15 @@
                 </div>
                 <div class="col-sm">
                     <label for="to" class="form-label">To</label>
-                    <select class="form-select" id="to">
-                        <option selected>EUR - Euro</option>
-                    </select>
+                    <input type="text" class="my-currency-input form-control" id="to" data-bs-toggle="dropdown">
+                    <div class="dropdown">
+                        <ul class="dropdown-menu w-100">
+                            <li><a class="dropdown-item">USD - US Dollar</a></li>
+                            <li><a class="dropdown-item">EUR - EURO</a></li>
+                            <li><a class="dropdown-item">UAH - Ukrainian Hryvnia</a></li>
+                            <li><a class="dropdown-item">BTC - Bitcoin</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,5 +99,13 @@
 
     .nav-link>.bi {
         color: inherit;
+    }
+
+    .my-currency-input {
+        cursor: default;
+    }
+
+    .my-currency-input:focus {
+        cursor: text;
     }
 </style>
