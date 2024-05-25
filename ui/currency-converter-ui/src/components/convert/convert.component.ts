@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-convert',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [CommonModule],
   templateUrl: 'convert.component.html',
   styleUrl: 'convert.component.css'
 })
@@ -21,7 +21,15 @@ export class ConvertComponent {
       new Currency(1, "USD", "US Dollar", "", "$"),
       new Currency(2, "EUR", "Euro", "", "€"),
       new Currency(3, "UAH", "Ukrainian Hryvnia", "", "₴"),
-      new Currency(4, "BTC", "Bitcoin", "", "₿")
+      new Currency(4, "BTC", "Bitcoin", "", "₿"),
+      new Currency(5, "JPY", "Japanese Yen", "", "¥"),
+      new Currency(6, "GBP", "British Pound", "", "£"),
+      new Currency(7, "AUD", "Australian Dollar", "", "A$"),
+      new Currency(8, "CAD", "Canadian Dollar", "", "C$"),
+      new Currency(9, "CHF", "Swiss Franc", "", "CHF"),
+      new Currency(10, "CNY", "Chinese Yuan", "", "¥"),
+      new Currency(11, "SEK", "Swedish Krona", "", "kr"),
+      new Currency(12, "NZD", "New Zealand Dollar", "", "NZ$")
     ];
 
     this.from = this.currencies[0];

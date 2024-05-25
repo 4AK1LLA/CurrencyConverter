@@ -5,3 +5,8 @@
 .my-currency-input:focus {
     cursor: text;
 }
+
+.my-dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}
