@@ -25,44 +25,9 @@
             </ul>
         </div>
         <div class="card-body p-5">
-            <div class="row align-items-center">
-                <div class="col-sm-4">
-                    <label for="amount" class="form-label">Amount</label>
-                    <div class="input-group">
-                        <span class="input-group-text">$</span>
-                        <input type="text" class="form-control" id="amount" value="1.00">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <label for="from" class="form-label">From</label>
-                    <input type="text" class="my-currency-input form-control" id="from" data-bs-toggle="dropdown">
-                    <div class="dropdown">
-                        <ul class="dropdown-menu w-100">
-                            <li><a class="dropdown-item">USD - US Dollar</a></li>
-                            <li><a class="dropdown-item">EUR - EURO</a></li>
-                            <li><a class="dropdown-item">UAH - Ukrainian Hryvnia</a></li>
-                            <li><a class="dropdown-item">BTC - Bitcoin</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-auto">
-                    <button class="rounded-circle" style="width: 50px; height: 50px;">
-                        <i class="bi bi-arrow-left-right"></i>
-                    </button>
-                </div>
-                <div class="col-sm">
-                    <label for="to" class="form-label">To</label>
-                    <input type="text" class="my-currency-input form-control" id="to" data-bs-toggle="dropdown">
-                    <div class="dropdown">
-                        <ul class="dropdown-menu w-100">
-                            <li><a class="dropdown-item">USD - US Dollar</a></li>
-                            <li><a class="dropdown-item">EUR - EURO</a></li>
-                            <li><a class="dropdown-item">UAH - Ukrainian Hryvnia</a></li>
-                            <li><a class="dropdown-item">BTC - Bitcoin</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
+            <app-convert></app-convert>
+            
         </div>
     </div>
 </div>
@@ -99,13 +64,5 @@
 
     .nav-link>.bi {
         color: inherit;
-    }
-
-    .my-currency-input {
-        cursor: default;
-    }
-
-    .my-currency-input:focus {
-        cursor: text;
     }
 </style>

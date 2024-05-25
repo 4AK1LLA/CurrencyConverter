@@ -1,0 +1,7 @@
+.my-currency-input {
+    cursor: default;
+}
+
+.my-currency-input:focus {
+    cursor: text;
+}
