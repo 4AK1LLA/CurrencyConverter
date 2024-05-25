@@ -12,7 +12,7 @@
         <label for="from" class="form-label">From</label>
         <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_FROM)"
             (input)="onCurrencyInputLiveSearch($event)" [value]="from.getDisplay()" autocomplete="off" type="text"
-            class="my-currency-input form-control" id="from" data-bs-toggle="dropdown" placeholder="Type to search...">
+            class="my-currency-input form-control" id="from" data-bs-toggle="dropdown" data-bs-offset="0,10" placeholder="Type to search...">
         <div class="dropdown">
             <ul class="my-dropdown-menu dropdown-menu w-100">
                 <li *ngFor="let currency of showCurrencies">
@@ -35,7 +35,7 @@
         <label for="to" class="form-label">To</label>
         <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_TO)"
             (input)="onCurrencyInputLiveSearch($event)" [value]="to.getDisplay()" autocomplete="off" type="text"
-            class="my-currency-input form-control" id="to" data-bs-toggle="dropdown" placeholder="Type to search...">
+            class="my-currency-input form-control" id="to" data-bs-toggle="dropdown" data-bs-offset="0,10" placeholder="Type to search...">
         <div class="dropdown">
             <ul class="my-dropdown-menu dropdown-menu w-100">
                 <li *ngFor="let currency of showCurrencies">
