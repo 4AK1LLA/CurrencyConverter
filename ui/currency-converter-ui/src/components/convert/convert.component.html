@@ -16,11 +16,9 @@
         <div class="dropdown">
             <ul class="my-dropdown-menu dropdown-menu w-100">
                 <li *ngFor="let currency of showCurrencies">
-                    <a (click)="changeCurrency(currency, TYPE_FROM)" class="dropdown-item"> {{ currency.getDisplay() }} </a>
+                    <a (click)="changeCurrency(currency, TYPE_FROM)" class="my-dropdown-item dropdown-item"> {{ currency.getDisplay() }} </a>
                 </li>
-                <li *ngIf="showCurrencies.length == 0">
-                    <a class="dropdown-item text-body-secondary">No results available</a>
-                </li>
+                <p *ngIf="showCurrencies.length == 0" class="pe-none mb-0 ms-3 text-body-secondary">No results available</p>
             </ul>
         </div>
     </div>
@@ -39,11 +37,9 @@
         <div class="dropdown">
             <ul class="my-dropdown-menu dropdown-menu w-100">
                 <li *ngFor="let currency of showCurrencies">
-                    <a (click)="changeCurrency(currency, TYPE_TO)" class="dropdown-item"> {{ currency.getDisplay() }} </a>
+                    <a (click)="changeCurrency(currency, TYPE_TO)" class="my-dropdown-item dropdown-item"> {{ currency.getDisplay() }} </a>
                 </li>
-                <li *ngIf="showCurrencies.length == 0">
-                    <a class="dropdown-item text-body-secondary">No results available</a>
-                </li>
+                <p *ngIf="showCurrencies.length == 0" class="pe-none mb-0 ms-3 text-body-secondary">No results available</p>
             </ul>
         </div>
     </div>
