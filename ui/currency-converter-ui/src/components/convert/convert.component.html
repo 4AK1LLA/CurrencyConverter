@@ -10,12 +10,13 @@
 
     <div class="col-sm">
         <label for="from" class="form-label">From</label>
-        <input type="text" class="my-currency-input form-control" id="from" data-bs-toggle="dropdown"
-            placeholder="Type to search..." [value]="from.code + ' - ' + from.displayName">
+        <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_FROM)"
+            [value]="from.getDisplay()" autocomplete="off" type="text" class="my-currency-input form-control" id="from"
+            data-bs-toggle="dropdown" placeholder="Type to search...">
         <div class="dropdown">
             <ul class="dropdown-menu w-100">
-                <li *ngFor="let currency of currencies">
-                    <a (click)="changeCurrencyFrom(currency)" class="dropdown-item"> {{ currency.code + ' - ' + currency.displayName }} </a>
+                <li *ngFor="let currency of showCurrencies">
+                    <a (click)="changeCurrency(currency, TYPE_FROM)" class="dropdown-item"> {{ currency.getDisplay() }} </a>
                 </li>
             </ul>
         </div>
@@ -29,12 +30,13 @@
 
     <div class="col-sm">
         <label for="to" class="form-label">To</label>
-        <input type="text" class="my-currency-input form-control" id="to" data-bs-toggle="dropdown"
-            placeholder="Type to search..." [value]="to.code + ' - ' + to.displayName">
+        <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_TO)"
+            [value]="to.getDisplay()" autocomplete="off" type="text" class="my-currency-input form-control" id="to"
+            data-bs-toggle="dropdown" placeholder="Type to search...">
         <div class="dropdown">
             <ul class="dropdown-menu w-100">
-                <li *ngFor="let currency of currencies">
-                    <a (click)="changeCurrencyTo(currency)" class="dropdown-item"> {{ currency.code + ' - ' + currency.displayName }} </a>
+                <li *ngFor="let currency of showCurrencies">
+                    <a (click)="changeCurrency(currency, TYPE_TO)" class="dropdown-item"> {{ currency.getDisplay() }} </a>
                 </li>
             </ul>
         </div>
