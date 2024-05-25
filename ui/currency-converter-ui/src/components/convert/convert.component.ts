@@ -45,13 +45,20 @@ export class ConvertComponent {
 
   onCurrencyInputClear(event: any) {
     event.target.value = '';
+    this.showCurrencies = this.currencies;
   }
 
   onCurrencyInputRefresh(event: any, type: number) {
-    this.showCurrencies = this.currencies;
-
     // timeout to prevent wrong currency name displaying
     setTimeout(() => event.target.value = type === this.TYPE_FROM ? this.from.getDisplay() : this.to.getDisplay(), 100);
+  }
+
+  onCurrencyInputLiveSearch(event: any) {
+    let query = event.target.value.toLowerCase();
+
+    this.showCurrencies = this.currencies.filter(currency =>
+      currency.code.toLowerCase().includes(query) || currency.displayName.toLowerCase().includes(query)
+    );
   }
 }
 
@@ -62,7 +69,7 @@ class Currency {
   description: string;
   symbol: string;
 
-  constructor(id:number, code: string, displayName: string, description: string, symbol: string) {
+  constructor(id: number, code: string, displayName: string, description: string, symbol: string) {
     this.id = id;
     this.code = code;
     this.displayName = displayName;

@@ -11,12 +11,15 @@
     <div class="col-sm">
         <label for="from" class="form-label">From</label>
         <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_FROM)"
-            [value]="from.getDisplay()" autocomplete="off" type="text" class="my-currency-input form-control" id="from"
-            data-bs-toggle="dropdown" placeholder="Type to search...">
+            (input)="onCurrencyInputLiveSearch($event)" [value]="from.getDisplay()" autocomplete="off" type="text"
+            class="my-currency-input form-control" id="from" data-bs-toggle="dropdown" placeholder="Type to search...">
         <div class="dropdown">
             <ul class="dropdown-menu w-100">
                 <li *ngFor="let currency of showCurrencies">
                     <a (click)="changeCurrency(currency, TYPE_FROM)" class="dropdown-item"> {{ currency.getDisplay() }} </a>
+                </li>
+                <li *ngIf="showCurrencies.length == 0">
+                    <a class="dropdown-item text-body-secondary">No results available</a>
                 </li>
             </ul>
         </div>
@@ -31,12 +34,15 @@
     <div class="col-sm">
         <label for="to" class="form-label">To</label>
         <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_TO)"
-            [value]="to.getDisplay()" autocomplete="off" type="text" class="my-currency-input form-control" id="to"
-            data-bs-toggle="dropdown" placeholder="Type to search...">
+            (input)="onCurrencyInputLiveSearch($event)" [value]="to.getDisplay()" autocomplete="off" type="text"
+            class="my-currency-input form-control" id="to" data-bs-toggle="dropdown" placeholder="Type to search...">
         <div class="dropdown">
             <ul class="dropdown-menu w-100">
                 <li *ngFor="let currency of showCurrencies">
                     <a (click)="changeCurrency(currency, TYPE_TO)" class="dropdown-item"> {{ currency.getDisplay() }} </a>
+                </li>
+                <li *ngIf="showCurrencies.length == 0">
+                    <a class="dropdown-item text-body-secondary">No results available</a>
                 </li>
             </ul>
         </div>
