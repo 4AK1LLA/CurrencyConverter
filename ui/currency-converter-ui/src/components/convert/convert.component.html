@@ -15,7 +15,7 @@
         <div class="dropdown">
             <ul class="dropdown-menu w-100">
                 <li *ngFor="let currency of currencies">
-                    <a [id]="currency.id" class="dropdown-item"> {{ currency.code + ' - ' + currency.displayName }} </a>
+                    <a (click)="changeCurrencyFrom(currency)" class="dropdown-item"> {{ currency.code + ' - ' + currency.displayName }} </a>
                 </li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
         <div class="dropdown">
             <ul class="dropdown-menu w-100">
                 <li *ngFor="let currency of currencies">
-                    <a [id]="currency.id" class="dropdown-item"> {{ currency.code + ' - ' + currency.displayName }} </a>
+                    <a (click)="changeCurrencyTo(currency)" class="dropdown-item"> {{ currency.code + ' - ' + currency.displayName }} </a>
                 </li>
             </ul>
         </div>

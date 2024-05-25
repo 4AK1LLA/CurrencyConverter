@@ -28,6 +28,14 @@ export class ConvertComponent {
   swapCurrencies() {
     [this.from, this.to] = [this.to, this.from];
   }
+
+  changeCurrencyFrom(currency: Currency) {
+    this.from = currency;
+  }
+
+  changeCurrencyTo(currency: Currency) {
+    this.to = currency;
+  }
 }
 
 class Currency {
