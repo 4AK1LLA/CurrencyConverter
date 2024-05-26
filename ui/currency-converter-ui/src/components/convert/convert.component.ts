@@ -52,8 +52,7 @@ export class ConvertComponent {
     this.to = this.currencies.find(currency => currency.code === toCode) || this.currencies[1];
 
     if (amount && fromCode && toCode) {
-      // convert request
-      this.rate = 1;
+      this.convert();
     }
   }
 
@@ -97,7 +96,11 @@ export class ConvertComponent {
 
     this.router
       .navigate(['currency-converter'], { queryParams })
-      .then(() => window.location.reload());
+      .then(() => this.convert());
+  }
+
+  convert() {
+    this.rate = 1;
   }
 }
 
