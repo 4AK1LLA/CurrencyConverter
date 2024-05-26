@@ -63,7 +63,9 @@ export class ConvertComponent {
   swapCurrencies() {
     [this.from, this.to] = [this.to, this.from];
 
-    this.refreshComponent();
+    if (this.rate) {
+      this.refreshComponent();
+    }
   }
 
   changeCurrency(currency: Currency, type: number) {
@@ -74,7 +76,9 @@ export class ConvertComponent {
       this.to = currency;
     }
 
-    this.refreshComponent();
+    if (this.rate) {
+      this.refreshComponent();
+    }
   }
 
   onCurrencyInputClear(event: any) {
