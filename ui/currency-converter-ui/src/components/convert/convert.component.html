@@ -90,40 +90,66 @@
         </div>
     </div>
 
-    <div *ngIf="rate" class="row mt-5">
-        <div class="col d-flex flex-column align-items-center">
-            <table class="table table-hover caption-top w-75">
-                <caption class="fs-4 text-center">Convert {{from.displayName}} to {{to.displayName}}</caption>
-                <thead>
-                    <tr>
-                        <th scope="col" class="text-center">{{from.code}}</th>
-                        <th scope="col" class="text-center">{{to.code}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let scale of scales">
-                        <th scope="row" class="text-center">{{scale | number}} {{from.code}}</th>
-                        <td class="text-center">{{scale * rate | number: '1.0-2'}}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div *ngIf="rate">
+        <div class="row mt-4">
+            <div class="col d-flex flex-column align-items-center">
+                <table class="table table-hover caption-top w-75">
+                    <caption class="fs-4 text-center">Convert {{from.displayName}} to {{to.displayName}}</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">{{from.code}}</th>
+                            <th scope="col" class="text-center">{{to.code}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let scale of scales">
+                            <th scope="row" class="text-center">{{scale | number}} {{from.code}}</th>
+                            <td class="text-center">{{scale * rate | number: '1.0-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col d-flex flex-column align-items-center">
+                <table class="table table-hover caption-top w-75">
+                    <caption class="fs-4 text-center">Convert {{to.displayName}} to {{from.displayName}}</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">{{to.code}}</th>
+                            <th scope="col" class="text-center">{{from.code}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let scale of scales">
+                            <th scope="row" class="text-center">{{scale | number}} {{to.code}}</th>
+                            <td class="text-center">{{scale * (1 / rate) | number: '1.0-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col d-flex flex-column align-items-center">
-            <table class="table table-hover caption-top w-75">
-                <caption class="fs-4 text-center">Convert {{to.displayName}} to {{from.displayName}}</caption>
-                <thead>
-                    <tr>
-                        <th scope="col" class="text-center">{{to.code}}</th>
-                        <th scope="col" class="text-center">{{from.code}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let scale of scales">
-                        <th scope="row" class="text-center">{{scale | number}} {{to.code}}</th>
-                        <td class="text-center">{{scale * (1 / rate) | number: '1.0-2'}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="mt-5" style="padding-bottom: 200px;">
+            <h3 class="border-bottom fw-semibold mb-4" style="color: #0A146E;">Currency Information</h3>
+            <div class="row g-5">
+                <div class="col">
+                    <div class="card shadow border-0">
+                        <div class="card-body">
+                            <h5 class="card-title">{{from.code}}</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">{{from.displayName}}</h6>
+                            <p class="card-text">{{from.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow border-0">
+                        <div class="card-body">
+                            <h5 class="card-title">{{to.code}}</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">{{to.displayName}}</h6>
+                            <p class="card-text">{{to.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
