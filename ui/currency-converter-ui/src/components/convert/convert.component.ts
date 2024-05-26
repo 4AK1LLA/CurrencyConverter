@@ -18,6 +18,7 @@ export class ConvertComponent {
   to: Currency;
   showCurrencies: Currency[];
   amountValue: string;
+  amount: number;
   rate: number;
 
   constructor(
@@ -87,6 +88,12 @@ export class ConvertComponent {
     );
   }
 
+  getDecimalDigits(number: number): string {
+    let formatted = number.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 8 });
+    let index = formatted.indexOf('.');
+    return formatted.slice(index + 3, formatted.length);
+  }
+
   onConvertClick() {
     let queryParams = {
       amount: this.amountValue,
@@ -100,7 +107,8 @@ export class ConvertComponent {
   }
 
   convert() {
-    this.rate = 1;
+    this.amount = 2.00;
+    this.rate = 34.3423563;
   }
 }
 
