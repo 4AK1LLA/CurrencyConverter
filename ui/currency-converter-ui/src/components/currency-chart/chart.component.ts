@@ -20,7 +20,9 @@ export class ChartComponent {
 
   constructor(
     public route: ActivatedRoute,
-    public router: Router) { }
+    public router: Router) { 
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    }
 
   ngOnInit() {
     this.currencies = [
