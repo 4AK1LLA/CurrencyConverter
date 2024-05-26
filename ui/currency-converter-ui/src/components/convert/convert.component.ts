@@ -24,7 +24,9 @@ export class ConvertComponent {
 
   constructor(
     public route: ActivatedRoute,
-    public router: Router) { }
+    public router: Router) { 
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    }
 
   ngOnInit() {
     this.currencies = [
@@ -54,16 +56,14 @@ export class ConvertComponent {
     this.to = this.currencies.find(currency => currency.code === toCode) || this.currencies[1];
 
     if (amount && fromCode && toCode) {
-      this.convert();
+      this.updateRate();
     }
   }
 
   swapCurrencies() {
     [this.from, this.to] = [this.to, this.from];
 
-    if (this.rate) {
-      this.onConvertClick();
-    }
+    this.refreshComponent();
   }
 
   changeCurrency(currency: Currency, type: number) {
@@ -74,9 +74,7 @@ export class ConvertComponent {
       this.to = currency;
     }
 
-    if (this.rate) {
-      this.onConvertClick();
-    }
+    this.refreshComponent();
   }
 
   onCurrencyInputClear(event: any) {
@@ -103,19 +101,17 @@ export class ConvertComponent {
     return formatted.slice(index + 3, formatted.length);
   }
 
-  onConvertClick() {
+  refreshComponent() {
     let queryParams = {
       amount: this.amountValue,
       from: this.from.code,
       to: this.to.code
     };
 
-    this.router
-      .navigate(['currency-converter'], { queryParams })
-      .then(() => this.convert());
+    this.router.navigate(['currency-converter'], { queryParams });
   }
 
-  convert() {
+  updateRate() {
     if (isNaN(parseFloat(this.amountValue))) {
       this.amount = 1;
       this.amountValue = '1.00';
