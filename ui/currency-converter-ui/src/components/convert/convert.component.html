@@ -1,51 +1,69 @@
-<div class="row align-items-center gy-3 mb-5">
-
-    <div class="col-sm-4">
-        <label for="amount" class="form-label">Amount</label>
-        <div class="input-group">
-            <span class="input-group-text">{{ from.symbol }}</span>
-            <input type="text" class="form-control" id="amount" value="1.00">
-        </div>
-    </div>
-
-    <div class="col-sm">
-        <label for="from" class="form-label">From</label>
-        <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_FROM)"
-            (input)="onCurrencyInputLiveSearch($event)" [value]="from.getDisplay()" autocomplete="off" type="text"
-            class="my-currency-input form-control" id="from" data-bs-toggle="dropdown" data-bs-offset="0,10" placeholder="Type to search...">
-        <div class="dropdown">
-            <ul class="my-dropdown-menu dropdown-menu w-100">
-                <li *ngFor="let currency of showCurrencies">
-                    <a (click)="changeCurrency(currency, TYPE_FROM)" class="my-dropdown-item dropdown-item"> {{ currency.getDisplay() }} </a>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header border-0 p-0 bg-transparent">
+            <ul class="nav nav-fill">
+                <li class="nav-item">
+                    <a class="convert-link nav-link py-3 active" href=""><i class="bi bi-cash-coin me-3"></i>Convert</a>
                 </li>
-                <p *ngIf="showCurrencies.length == 0" class="pe-none mb-0 ms-3 text-body-secondary">No results available</p>
+                <li class="nav-item">
+                    <a class="charts-link py-3 nav-link" href=""><i class="bi bi-graph-down me-3"></i>Charts</a>
+                </li>
             </ul>
         </div>
-    </div>
+        <div class="card-body p-5">
 
-    <div class="col-sm-auto">
-        <button (click)="swapCurrencies()" class="rounded-circle" style="width: 50px; height: 50px;">
-            <i class="bi bi-arrow-left-right"></i>
-        </button>
-    </div>
+            <div class="row align-items-center gy-3 mb-5">
 
-    <div class="col-sm">
-        <label for="to" class="form-label">To</label>
-        <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_TO)"
-            (input)="onCurrencyInputLiveSearch($event)" [value]="to.getDisplay()" autocomplete="off" type="text"
-            class="my-currency-input form-control" id="to" data-bs-toggle="dropdown" data-bs-offset="0,10" placeholder="Type to search...">
-        <div class="dropdown">
-            <ul class="my-dropdown-menu dropdown-menu w-100">
-                <li *ngFor="let currency of showCurrencies">
-                    <a (click)="changeCurrency(currency, TYPE_TO)" class="my-dropdown-item dropdown-item"> {{ currency.getDisplay() }} </a>
-                </li>
-                <p *ngIf="showCurrencies.length == 0" class="pe-none mb-0 ms-3 text-body-secondary">No results available</p>
-            </ul>
+                <div class="col-sm-4">
+                    <label for="amount" class="form-label">Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-text">{{ from.symbol }}</span>
+                        <input type="text" class="form-control" id="amount" value="1.00">
+                    </div>
+                </div>
+            
+                <div class="col-sm">
+                    <label for="from" class="form-label">From</label>
+                    <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_FROM)"
+                        (input)="onCurrencyInputLiveSearch($event)" [value]="from.getDisplay()" autocomplete="off" type="text"
+                        class="my-currency-input form-control" id="from" data-bs-toggle="dropdown" data-bs-offset="0,10" placeholder="Type to search...">
+                    <div class="dropdown">
+                        <ul class="my-dropdown-menu dropdown-menu w-100">
+                            <li *ngFor="let currency of showCurrencies">
+                                <a (click)="changeCurrency(currency, TYPE_FROM)" class="my-dropdown-item dropdown-item"> {{ currency.getDisplay() }} </a>
+                            </li>
+                            <p *ngIf="showCurrencies.length == 0" class="pe-none mb-0 ms-3 text-body-secondary">No results available</p>
+                        </ul>
+                    </div>
+                </div>
+            
+                <div class="col-sm-auto">
+                    <button (click)="swapCurrencies()" class="rounded-circle" style="width: 50px; height: 50px;">
+                        <i class="bi bi-arrow-left-right"></i>
+                    </button>
+                </div>
+            
+                <div class="col-sm">
+                    <label for="to" class="form-label">To</label>
+                    <input (focus)="onCurrencyInputClear($event)" (blur)="onCurrencyInputRefresh($event, TYPE_TO)"
+                        (input)="onCurrencyInputLiveSearch($event)" [value]="to.getDisplay()" autocomplete="off" type="text"
+                        class="my-currency-input form-control" id="to" data-bs-toggle="dropdown" data-bs-offset="0,10" placeholder="Type to search...">
+                    <div class="dropdown">
+                        <ul class="my-dropdown-menu dropdown-menu w-100">
+                            <li *ngFor="let currency of showCurrencies">
+                                <a (click)="changeCurrency(currency, TYPE_TO)" class="my-dropdown-item dropdown-item"> {{ currency.getDisplay() }} </a>
+                            </li>
+                            <p *ngIf="showCurrencies.length == 0" class="pe-none mb-0 ms-3 text-body-secondary">No results available</p>
+                        </ul>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary py-2 px-3">Convert</button>
+            </div>
+            
         </div>
     </div>
-
-</div>
-
-<div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-primary py-2 px-3">Convert</button>
 </div>

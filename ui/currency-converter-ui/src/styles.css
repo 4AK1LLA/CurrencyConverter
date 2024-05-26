@@ -17,3 +17,36 @@ body {
 .container {
     max-width: 1200px;
 }
+
+/* resolve border overlapping */
+.nav,
+.nav-item {
+    border-radius: inherit;
+}
+
+.convert-link {
+    border-top-left-radius: inherit;
+}
+
+.charts-link {
+    border-top-right-radius: inherit;
+}
+
+.nav-link {
+    background-color: var(--bs-gray-200);
+    color: var(--bs-gray-700);
+}
+
+.nav-link.active {
+    background-color: white;
+    color: var(--bs-blue);
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    opacity: 50%;
+}
+
+.nav-link>.bi {
+    color: inherit;
+}
