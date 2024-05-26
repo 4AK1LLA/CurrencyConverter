@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-convert',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: 'convert.component.html',
   styleUrl: 'convert.component.css'
 })
@@ -15,6 +17,12 @@ export class ConvertComponent {
   from: Currency;
   to: Currency;
   showCurrencies: Currency[];
+  amountValue: string;
+  rate: number;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.currencies = [
@@ -32,10 +40,21 @@ export class ConvertComponent {
       new Currency(12, "NZD", "New Zealand Dollar", "", "NZ$")
     ];
 
-    this.from = this.currencies[0];
-    this.to = this.currencies[1];
-
     this.showCurrencies = this.currencies;
+
+    let amount = this.route.snapshot.queryParamMap.get('amount');
+    this.amountValue = amount || '1.00';
+
+    let fromCode = this.route.snapshot.queryParamMap.get('from');
+    this.from = this.currencies.find(currency => currency.code === fromCode) || this.currencies[0];
+
+    let toCode = this.route.snapshot.queryParamMap.get('to');
+    this.to = this.currencies.find(currency => currency.code === toCode) || this.currencies[1];
+
+    if (amount && fromCode && toCode) {
+      // convert request
+      this.rate = 1;
+    }
   }
 
   swapCurrencies() {
@@ -67,6 +86,18 @@ export class ConvertComponent {
     this.showCurrencies = this.currencies.filter(currency =>
       currency.code.toLowerCase().includes(query) || currency.displayName.toLowerCase().includes(query)
     );
+  }
+
+  onConvertClick() {
+    let queryParams = {
+      amount: this.amountValue,
+      from: this.from.code,
+      to: this.to.code
+    };
+
+    this.router
+      .navigate(['currency-converter'], { queryParams })
+      .then(() => window.location.reload());
   }
 }
 
