@@ -1,15 +1,21 @@
-<!-- <nav class="navbar">
-    <div class="container">
-        <a href="" class="d-flex align-items-center text-white">
-            <i class="bi bi-currency-exchange me-2 fs-2"></i>
-            <span class="fs-5">CurrencyConverter</span>
-        </a>
+<div class="my-banner">
+    <div class="container d-flex align-items-center" style="height: 350px;">
+        <div class="text-center text-white w-100">
+            <h1 class="fw-bold fs-2">Trusted Global Currency Converter</h1>
+            <p>Best source for currency conversion and tracking exchange rates</p>
+        </div>
     </div>
-</nav> -->
-
-<div class="container mt-5 text-center text-white">
-    <h1 class="fw-bold fs-2">Trusted Global Currency Converter</h1>
-    <p>Best source for currency conversion and tracking exchange rates</p>
 </div>
 
-<router-outlet></router-outlet>
+<div class="bg-white" style="min-height: 500px;">
+    <router-outlet></router-outlet>
+</div>
+
+<footer>Footer</footer>
+
+<style>
+    .my-banner {
+        background-image: url('/assets/image.png');
+        background-size: 2000px;
+    }
+</style>

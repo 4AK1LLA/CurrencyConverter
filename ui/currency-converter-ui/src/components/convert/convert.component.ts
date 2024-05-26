@@ -60,6 +60,10 @@ export class ConvertComponent {
 
   swapCurrencies() {
     [this.from, this.to] = [this.to, this.from];
+
+    if (this.rate) {
+      this.onConvertClick();
+    }
   }
 
   changeCurrency(currency: Currency, type: number) {
