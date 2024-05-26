@@ -43,7 +43,7 @@ export class ConvertComponent {
     this.showCurrencies = this.currencies;
 
     let amount = this.route.snapshot.queryParamMap.get('amount');
-    this.amountValue = amount || '1.00';
+    this.amountValue = !isNaN(parseFloat(amount || '')) ? amount! : '1.00';
 
     let fromCode = this.route.snapshot.queryParamMap.get('from');
     this.from = this.currencies.find(currency => currency.code === fromCode) || this.currencies[0];
