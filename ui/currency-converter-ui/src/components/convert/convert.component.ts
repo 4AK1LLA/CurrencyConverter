@@ -68,6 +68,10 @@ export class ConvertComponent {
     if (type === this.TYPE_TO) {
       this.to = currency;
     }
+
+    if (this.rate) {
+      this.onConvertClick();
+    }
   }
 
   onCurrencyInputClear(event: any) {
