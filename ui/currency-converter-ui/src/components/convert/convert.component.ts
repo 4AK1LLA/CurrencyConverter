@@ -23,8 +23,8 @@ export class ConvertComponent {
   rate: number;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router) { }
+    public route: ActivatedRoute,
+    public router: Router) { }
 
   ngOnInit() {
     this.currencies = [
@@ -116,7 +116,13 @@ export class ConvertComponent {
   }
 
   convert() {
-    this.amount = 2.00;
+    if (isNaN(parseFloat(this.amountValue))) {
+      this.amount = 1;
+      this.amountValue = '1.00';
+    } else {
+      this.amount = parseFloat(this.amountValue);
+    }
+
     this.rate = 34.3423563;
   }
 }

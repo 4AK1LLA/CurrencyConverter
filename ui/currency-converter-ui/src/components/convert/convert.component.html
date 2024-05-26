@@ -3,10 +3,10 @@
         <div class="card-header border-0 p-0 bg-transparent">
             <ul class="nav nav-fill">
                 <li class="nav-item">
-                    <a class="convert-link nav-link py-3 active" href=""><i class="bi bi-cash-coin me-3"></i>Convert</a>
+                    <a (click)="router.navigate(['currency-converter']); rate = null!" class="convert-link nav-link py-3 active"><i class="bi bi-cash-coin me-3"></i>Convert</a>
                 </li>
                 <li class="nav-item">
-                    <a class="charts-link py-3 nav-link" href=""><i class="bi bi-graph-down me-3"></i>Charts</a>
+                    <a class="charts-link py-3 nav-link"><i class="bi bi-graph-down me-3"></i>Charts</a>
                 </li>
             </ul>
         </div>
@@ -132,7 +132,7 @@
             <h3 class="border-bottom fw-semibold mb-4" style="color: #0A146E;">Currency Information</h3>
             <div class="row g-5">
                 <div class="col">
-                    <div class="card shadow border-0">
+                    <div class="card shadow border-0 h-100">
                         <div class="card-body">
                             <h5 class="card-title">{{from.code}}</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary">{{from.displayName}}</h6>
@@ -141,7 +141,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card shadow border-0">
+                    <div class="card shadow border-0 h-100">
                         <div class="card-body">
                             <h5 class="card-title">{{to.code}}</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary">{{to.displayName}}</h6>
