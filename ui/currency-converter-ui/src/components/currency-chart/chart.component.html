@@ -66,15 +66,15 @@
                     <span style="font-size: small;">We utilize our proprietary API and data, which are manually updated
                         by our team members, hence ensuring accuracy and reliability.</span>
                 </div>
-                <div class="d-flex align-items-end">
-                    <button type="button" class="btn btn-primary py-2 px-5">View chart</button>
+                <div *ngIf="!chart" class="d-flex align-items-end">
+                    <button (click)="onParamsUpdate()" type="button" class="btn btn-primary py-2 px-5">View chart</button>
                 </div>
             </div>
 
             <div *ngIf="chart" class="chart mt-5">
-                <h4 class="fw-semibold" style="color: #0A146E;">USD to GBP Chart <span class="text-danger">-3.13%
-                    </span><span class="fw-light fs-6">(1Y)</span></h4>
-                <p class="border-bottom text-secondary pb-3">US Dollar to British Pound</p>
+                <h4 class="fw-semibold" style="color: #0A146E;">{{from.code}} to {{to.code}} Chart <span class="text-danger">-3.13%
+                    </span><span class="fw-light fs-6">(1{{period[0].toUpperCase()}})</span></h4>
+                <p class="border-bottom text-secondary pb-3">{{from.displayName}} to {{to.displayName}}</p>
                 <ul class="nav nav-underline justify-content-center mb-2">
                     <li *ngFor="let p of periods" class="nav-item">
                         <a class="{{p == period ? 'nav-link active' : 'nav-link'}}">1{{p[0].toUpperCase()}}</a>
@@ -86,7 +86,7 @@
 
             <div *ngIf="chart" class="text-center text-secondary mt-3">
                 <p class="mb-0">May 27, 2023, 00:00 - May 27, 2024, 08:35</p>
-                <p>USD/GBP <span class="fw-semibold">low:</span> 0.761718 <span class="fw-semibold">high:</span> 0.827964</p>
+                <p>{{from.code}}/{{to.code}} <span class="fw-semibold">low:</span> 0.761718 <span class="fw-semibold">high:</span> 0.827964</p>
             </div>
         </div>
     </div>

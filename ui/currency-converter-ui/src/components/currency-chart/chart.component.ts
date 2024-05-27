@@ -24,9 +24,9 @@ export class ChartComponent {
 
   constructor(
     public route: ActivatedRoute,
-    public router: Router) { 
+    public router: Router) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    }
+  }
 
   ngOnInit() {
     this.currencies = [
@@ -46,8 +46,10 @@ export class ChartComponent {
 
     this.showCurrencies = this.currencies;
 
-    this.periods = [ 'hour', 'day', 'week', 'month', 'year' ];
-    this.period = this.periods[3];
+    this.periods = ['hour', 'day', 'week', 'month', 'year'];
+
+    let periodParam = this.route.snapshot.queryParamMap.get('period');
+    this.period = this.periods.includes(periodParam || '') ? periodParam! : this.periods[3];
 
     let fromCode = this.route.snapshot.queryParamMap.get('from');
     this.from = this.currencies.find(currency => currency.code === fromCode) || this.currencies[0];
@@ -55,10 +57,12 @@ export class ChartComponent {
     let toCode = this.route.snapshot.queryParamMap.get('to');
     this.to = this.currencies.find(currency => currency.code === toCode) || this.currencies[1];
 
-    if (fromCode && toCode) {
-      // this.convert();
+    if (periodParam && fromCode && toCode) {
+      this.createChart();
     }
+  }
 
+  createChart() {
     let data = [
       { date: '2024-05-24T05:00:00', rate: 34.2343 },
       { date: '2024-05-25T07:00:00', rate: 34.512 },
@@ -73,10 +77,10 @@ export class ChartComponent {
       data: {
         labels: data.map(row => new DatePipe('en-US').transform(new Date(row.date), 'dd:MM:yyyy HH:mm:ss')),
         datasets: [{
-            label: 'Rate',
-            data: data.map(row => row.rate),
-            tension: 0.2
-          }]
+          label: 'Rate',
+          data: data.map(row => row.rate),
+          tension: 0.2
+        }]
       },
       options: {
         plugins: {
@@ -91,9 +95,9 @@ export class ChartComponent {
   swapCurrencies() {
     [this.from, this.to] = [this.to, this.from];
 
-    // if (this.rate) {
-    //   this.onConvertClick();
-    // }
+    if (this.chart) {
+      this.onParamsUpdate();
+    }
   }
 
   changeCurrency(currency: Currency, type: number) {
@@ -104,9 +108,9 @@ export class ChartComponent {
       this.to = currency;
     }
 
-    // if (this.rate) {
-    //   this.onConvertClick();
-    // }
+    if (this.chart) {
+      this.onParamsUpdate();
+    }
   }
 
   onCurrencyInputClear(event: any) {
@@ -127,28 +131,15 @@ export class ChartComponent {
     );
   }
 
-  // onConvertClick() {
-  //   let queryParams = {
-  //     amount: this.amountValue,
-  //     from: this.from.code,
-  //     to: this.to.code
-  //   };
+  onParamsUpdate() {
+    let queryParams = {
+      period: this.period,
+      from: this.from.code,
+      to: this.to.code
+    };
 
-  //   this.router
-  //     .navigate(['currency-converter'], { queryParams })
-  //     .then(() => this.convert());
-  // }
-
-  // convert() {
-  //   if (isNaN(parseFloat(this.amountValue))) {
-  //     this.amount = 1;
-  //     this.amountValue = '1.00';
-  //   } else {
-  //     this.amount = parseFloat(this.amountValue);
-  //   }
-
-  //   this.rate = 34.3423563;
-  // }
+    this.router.navigate(['currency-chart'], { queryParams });
+  }
 }
 
 class Currency {
