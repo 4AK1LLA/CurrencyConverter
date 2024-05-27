@@ -82,7 +82,7 @@
                 </ul>
             </div>
 
-            <canvas id="currency-chart"></canvas>
+            <canvas id="currency-chart" [hidden]="!chart"></canvas>
 
             <div *ngIf="chart" class="text-center text-secondary mt-3">
                 <p class="mb-0">May 27, 2023, 00:00 - May 27, 2024, 08:35</p>
