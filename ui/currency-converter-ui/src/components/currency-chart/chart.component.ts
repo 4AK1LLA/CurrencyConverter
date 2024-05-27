@@ -20,6 +20,7 @@ export class ChartComponent {
   showCurrencies: Currency[];
   chart: any;
   period: string;
+  periods: string[];
 
   constructor(
     public route: ActivatedRoute,
@@ -45,6 +46,9 @@ export class ChartComponent {
 
     this.showCurrencies = this.currencies;
 
+    this.periods = [ 'hour', 'day', 'week', 'month', 'year' ];
+    this.period = this.periods[3];
+
     let fromCode = this.route.snapshot.queryParamMap.get('from');
     this.from = this.currencies.find(currency => currency.code === fromCode) || this.currencies[0];
 
@@ -68,12 +72,11 @@ export class ChartComponent {
       type: 'line',
       data: {
         labels: data.map(row => new DatePipe('en-US').transform(new Date(row.date), 'dd:MM:yyyy HH:mm:ss')),
-        datasets: [
-          {
+        datasets: [{
             label: 'Rate',
-            data: data.map(row => row.rate)
-          }
-        ]
+            data: data.map(row => row.rate),
+            tension: 0.2
+          }]
       },
       options: {
         plugins: {
