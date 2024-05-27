@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -89,7 +89,8 @@ export class ConvertComponent {
   }
 
   getDecimalDigits(number: number): string {
-    let formatted = number.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 8 });
+    let pipe = new DecimalPipe('en-US');
+    let formatted = pipe.transform(number, '1.2-8') || '';
     let index = formatted.indexOf('.');
     return formatted.slice(index + 3, formatted.length);
   }
