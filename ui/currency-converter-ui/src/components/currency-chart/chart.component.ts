@@ -22,10 +22,13 @@ export class ChartComponent {
   from: Currency;
   to: Currency;
   showCurrencies: Currency[];
-  rates: Rate[];
-  chart: any;
   period: string;
   periods: string[];
+  rates: Rate[];
+  chart: any;
+  min: Rate;
+  max: Rate;
+  percent: number;
 
   constructor(
     private http: HttpClient,
@@ -72,6 +75,10 @@ export class ChartComponent {
             return new Rate(value, date, dateStr);
           })
           .sort((a, b) => a.date.getTime() - b.date.getTime());
+
+          this.min = this.rates[0];
+          this.max = this.rates[this.rates.length - 1];
+          this.percent = ((this.max.value - this.min.value) / this.min.value) * 100;
 
         this.chart = new Chart('currency-chart', {
           type: 'line',

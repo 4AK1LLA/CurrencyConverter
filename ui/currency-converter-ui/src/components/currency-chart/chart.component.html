@@ -72,8 +72,8 @@
             </div>
 
             <div *ngIf="chart" class="chart mt-5">
-                <h4 class="fw-semibold" style="color: #0A146E;">{{from.code}} to {{to.code}} Chart <span class="text-danger">-3.13%
-                    </span><span class="fw-light fs-6">(1{{period[0].toUpperCase()}})</span></h4>
+                <h4 class="fw-semibold" style="color: #0A146E;">{{from.code}} to {{to.code}} Chart <span [ngClass]="percent >= 0 ? 'text-success' : 'text-danger'">
+                    {{percent | number: '1.0-2'}}% </span><span class="fw-light fs-6">(1{{period[0].toUpperCase()}})</span></h4>
                 <p class="border-bottom text-secondary pb-3">{{from.displayName}} to {{to.displayName}}</p>
                 <ul class="nav nav-underline justify-content-center mb-2">
                     <li *ngFor="let p of periods" class="nav-item">
@@ -85,8 +85,7 @@
             <canvas id="currency-chart" [hidden]="!chart"></canvas>
 
             <div *ngIf="chart" class="text-center text-secondary mt-3">
-                <p class="mb-0">May 27, 2023, 00:00 - May 27, 2024, 08:35</p>
-                <p>{{from.code}}/{{to.code}} <span class="fw-semibold">low:</span> 0.761718 <span class="fw-semibold">high:</span> 0.827964</p>
+                <p>{{from.code}}/{{to.code}} <span class="fw-semibold">low:</span> {{min.value | number: '1.2-8'}} <span class="fw-semibold">high:</span> {{max.value | number: '1.2-8'}}</p>
             </div>
         </div>
     </div>
