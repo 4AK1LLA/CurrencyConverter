@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { Currency } from '../../models/currency';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Rate } from '../../models/rate';
 
 @Component({
   selector: 'app-convert',
@@ -19,14 +22,16 @@ export class ChartComponent {
   from: Currency;
   to: Currency;
   showCurrencies: Currency[];
+  rates: Rate[];
   chart: any;
   period: string;
   periods: string[];
 
   constructor(
+    private http: HttpClient,
     public route: ActivatedRoute,
     public router: Router) {
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {
@@ -52,33 +57,41 @@ export class ChartComponent {
   }
 
   createChart() {
-    let data = [
-      { date: '2024-05-24T05:00:00', rate: 34.2343 },
-      { date: '2024-05-25T07:00:00', rate: 34.512 },
-      { date: '2024-05-25T23:00:00', rate: 34.35534 },
-      { date: '2024-05-26T07:00:00', rate: 34.2356 },
-      { date: '2024-05-26T23:00:00', rate: 34.3356 },
-      { date: '2024-05-27T07:00:00', rate: 34.201 }
-    ];
+    const params = new HttpParams()
+      .set('fromId', this.from.id)
+      .set('toId', this.to.id)
+      .set('period', this.period);
 
-    this.chart = new Chart('currency-chart', {
-      type: 'line',
-      data: {
-        labels: data.map(row => new DatePipe('en-US').transform(new Date(row.date), 'dd:MM:yyyy HH:mm:ss')),
-        datasets: [{
-          label: 'Rate',
-          data: data.map(row => row.rate),
-          tension: 0.2
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            display: false
+    this.http.get(environment.apiUrl + '/chart', { params })
+      .subscribe(data => {
+
+        this.rates = Object.entries(data)
+          .map(([d, value]) => {
+            let date = new Date(d);
+            let dateStr = new DatePipe('en-US').transform(date, 'dd:MM:yyyy HH:mm:ss') || '';
+            return new Rate(value, date, dateStr);
+          })
+          .sort((a, b) => a.date.getTime() - b.date.getTime());
+
+        this.chart = new Chart('currency-chart', {
+          type: 'line',
+          data: {
+            labels: this.rates.map(rate => rate.dateStr),
+            datasets: [{
+              label: 'Rate',
+              data: this.rates.map(rate => rate.value),
+              tension: 0.2
+            }]
+          },
+          options: {
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
           }
-        }
-      }
-    });
+        });
+      });
   }
 
   swapCurrencies() {
