@@ -14,7 +14,7 @@ builder.Services.AddDbContext<CurrencyRatesDbContext>(options =>
     if (useSql)
     {
         ///
-    } 
+    }
     else
     {
         options.UseInMemoryDatabase("CurrencyConverter");
@@ -23,6 +23,15 @@ builder.Services.AddDbContext<CurrencyRatesDbContext>(options =>
 
 builder.Services.AddScoped<CurrencyRatesService>();
 builder.Services.AddScoped<ChartService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        b => b.WithOrigins(builder.Configuration.GetValue<string>("CorsOrigin"))
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+    );
+});
 
 var app = builder.Build();
 
@@ -34,6 +43,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.MapGet("/currencies", (CurrencyRatesService service) => service.GetAllCurrencies());
 
