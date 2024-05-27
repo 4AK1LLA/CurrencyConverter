@@ -5,7 +5,7 @@
         symbol: $
     EUR:
         display-name: "Euro"
-        description: "On January 1, 1999, the Euro (EUR) was introduced as an account currency, replacing the European Currency Unit at par. The European Currency Unit was a theoretical basket of currencies rather than a physical currency in and of itself. Initially, eleven of the countries in the European Economic and Monetary Union replaced their own currencies with the Euro: Austria, Belgium, Finland, France, Germany, Ireland, Italy, Luxembourg, the Netherlands, Portugal, and Spain. Greece followed suit in 2001, Slovenia in 2007, Malta and Cyprus in 2008, Slovakia in 2009 and Latvia in 2014."
+        description: "The Euro is the official currency of the Eurozone, which consists of 19 of the 27 member states of the European Union. It is the second most traded currency in the foreign exchange market after the US Dollar."
         symbol: €
     UAH:
         display-name: "Ukrainian Hryvnia"
@@ -15,6 +15,78 @@
         display-name: "Bitcoin"
         description: "Bitcoin (BTC) is a cryptocurrency (a virtual currency) designed to act as money and a form of payment outside the control of any one person, group, or entity. This removes the need for trusted third-party involvement (e.g., a mint or bank) in financial transactions."
         symbol: ₿
+    JPY:
+        display-name: "Japanese Yen"
+        description: "The Japanese Yen is the official currency of Japan and is the third most traded currency in the foreign exchange market. It is also widely used as a reserve currency after the US Dollar and the Euro."
+        symbol: ¥
+    GBP:
+        display-name: "British Pound"
+        description: "The British Pound, also known as the Pound Sterling, is the official currency of the United Kingdom. It is the fourth most traded currency in the foreign exchange market."
+        symbol: £
+    AUD:
+        display-name: "Australian Dollar"
+        description: "The Australian Dollar is the official currency of Australia and is the fifth most traded currency in the foreign exchange market. It is also widely used in the Pacific region."
+        symbol: A$
+    CAD:
+        display-name: "Canadian Dollar"
+        description: "The Canadian Dollar is the official currency of Canada. It is the sixth most traded currency in the foreign exchange market and is commonly used as a benchmark currency for commodity prices."
+        symbol: C$
+    CHF:
+        display-name: "Swiss Franc"
+        description: "The Swiss Franc is the official currency of Switzerland and Liechtenstein. It is considered a safe-haven currency and is widely used in international finance."
+        symbol: CHF
+    CNY:
+        display-name: "Chinese Yuan"
+        description: "The Chinese Yuan, also known as the Renminbi, is the official currency of the People's Republic of China. It is increasingly used in international trade and finance."
+        symbol: ¥
+    SEK:
+        display-name: "Swedish Krona"
+        description: "The Swedish Krona is the official currency of Sweden. It is the eighth most traded currency in the foreign exchange market."
+        symbol: kr
+    NZD:
+        display-name: "New Zealand Dollar"
+        description: "The New Zealand Dollar is the official currency of New Zealand. It is also used in the Cook Islands, Niue, Tokelau, and the Pitcairn Islands."
+        symbol: NZ$
+    MXN:
+        display-name: "Mexican Peso"
+        description: "The Mexican Peso is the official currency of Mexico. It is the most traded currency in Latin America and the tenth most traded currency in the world."
+        symbol: $
+    SGD:
+        display-name: "Singapore Dollar"
+        description: "The Singapore Dollar is the official currency of Singapore. It is one of the strongest currencies in the Asia-Pacific region."
+        symbol: S$
+    HKD:
+        display-name: "Hong Kong Dollar"
+        description: "The Hong Kong Dollar is the official currency of Hong Kong. It is the thirteenth most traded currency in the foreign exchange market."
+        symbol: HK$
+    NOK:
+        display-name: "Norwegian Krone"
+        description: "The Norwegian Krone is the official currency of Norway. It is the fourteenth most traded currency in the foreign exchange market."
+        symbol: kr
+    KRW:
+        display-name: "South Korean Won"
+        description: "The South Korean Won is the official currency of South Korea. It is widely used in international trade, particularly in the electronics and automobile industries."
+        symbol: ₩
+    TRY:
+        display-name: "Turkish Lira"
+        description: "The Turkish Lira is the official currency of Turkey. It is widely used in the Middle East and is also accepted in some parts of Europe."
+        symbol: ₺
+    RUB:
+        display-name: "Russian Ruble"
+        description: "The Russian Ruble is the official currency of Russia. It is the seventeenth most traded currency in the foreign exchange market."
+        symbol: ₽
+    INR:
+        display-name: "Indian Rupee"
+        description: "The Indian Rupee is the official currency of India. It is widely used in South Asia and is the eighteenth most traded currency in the foreign exchange market."
+        symbol: ₹
+    BRL:
+        display-name: "Brazilian Real"
+        description: "The Brazilian Real is the official currency of Brazil. It is the most traded currency in South America and is the nineteenth most traded currency in the foreign exchange market."
+        symbol: R$
+    ZAR:
+        display-name: "South African Rand"
+        description: "The South African Rand is the official currency of South Africa. It is widely used in Southern Africa and is the twentieth most traded currency in the foreign exchange market."
+        symbol: R
 
 rates:
   - date: "23.05.2024 18:00:00"
