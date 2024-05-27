@@ -15,7 +15,7 @@ export class ConvertComponent {
   public readonly TYPE_FROM = 1;
   public readonly TYPE_TO = 2;
   scales = [ 1, 5, 10, 25, 50, 100, 500, 1000, 5000, 10000 ];
-  currencies: Currency[];
+  currencies: Currency[] = [];
   from: Currency;
   to: Currency;
   showCurrencies: Currency[];
@@ -30,6 +30,9 @@ export class ConvertComponent {
     }
 
   ngOnInit() {
+    let data: any[] = this.route.snapshot.data['currencies'];
+    data.forEach(c => this.currencies.push(new Currency(c.currencyId, c.code, c.displayName, c.description, c.symbol)));
+    
     this.showCurrencies = this.currencies;
 
     let amount = this.route.snapshot.queryParamMap.get('amount');

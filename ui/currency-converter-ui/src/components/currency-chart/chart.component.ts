@@ -15,7 +15,7 @@ import { Currency } from '../../models/currency';
 export class ChartComponent {
   public readonly TYPE_FROM = 1;
   public readonly TYPE_TO = 2;
-  currencies: Currency[];
+  currencies: Currency[] = [];
   from: Currency;
   to: Currency;
   showCurrencies: Currency[];
@@ -30,6 +30,9 @@ export class ChartComponent {
   }
 
   ngOnInit() {
+    let data: any[] = this.route.snapshot.data['currencies'];
+    data.forEach(c => this.currencies.push(new Currency(c.currencyId, c.code, c.displayName, c.description, c.symbol)));
+
     this.showCurrencies = this.currencies;
 
     this.periods = ['hour', 'day', 'week', 'month', 'year'];
