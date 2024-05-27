@@ -40,10 +40,10 @@ export class ChartComponent {
 
     this.showCurrencies = this.currencies;
 
-    this.periods = ['hour', 'day', 'week', 'month', 'year'];
+    this.periods = ['day', 'week', 'month', 'year'];
 
     let periodParam = this.route.snapshot.queryParamMap.get('period');
-    this.period = this.periods.includes(periodParam || '') ? periodParam! : this.periods[2];
+    this.period = this.periods.includes(periodParam || '') ? periodParam! : this.periods[1];
 
     let fromCode = this.route.snapshot.queryParamMap.get('from');
     this.from = this.currencies.find(currency => currency.code === fromCode) || this.currencies[0];
