@@ -49,7 +49,7 @@ export class ChartComponent {
     this.periods = ['hour', 'day', 'week', 'month', 'year'];
 
     let periodParam = this.route.snapshot.queryParamMap.get('period');
-    this.period = this.periods.includes(periodParam || '') ? periodParam! : this.periods[3];
+    this.period = this.periods.includes(periodParam || '') ? periodParam! : this.periods[2];
 
     let fromCode = this.route.snapshot.queryParamMap.get('from');
     this.from = this.currencies.find(currency => currency.code === fromCode) || this.currencies[0];

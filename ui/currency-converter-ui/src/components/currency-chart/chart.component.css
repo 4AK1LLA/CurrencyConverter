@@ -14,3 +14,7 @@
 .my-dropdown-item:hover {
     cursor: pointer;
 }
+
+.nav-link:hover {
+    cursor: pointer;
+}

@@ -77,7 +77,7 @@
                 <p class="border-bottom text-secondary pb-3">{{from.displayName}} to {{to.displayName}}</p>
                 <ul class="nav nav-underline justify-content-center mb-2">
                     <li *ngFor="let p of periods" class="nav-item">
-                        <a class="{{p == period ? 'nav-link active' : 'nav-link'}}">1{{p[0].toUpperCase()}}</a>
+                        <a (click)="period = p; onParamsUpdate();" class="{{p == period ? 'nav-link active' : 'nav-link'}}">1{{p[0].toUpperCase()}}</a>
                     </li>
                 </ul>
             </div>
