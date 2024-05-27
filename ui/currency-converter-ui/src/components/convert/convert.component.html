@@ -3,10 +3,12 @@
         <div class="card-header border-0 p-0 bg-transparent">
             <ul class="nav nav-fill">
                 <li class="nav-item">
-                    <a (click)="router.navigate(['currency-converter'])" class="my-convert-link nav-link py-3 active"><i class="bi bi-cash-coin me-3"></i>Convert</a>
+                    <a (click)="router.navigate(['currency-converter'])" class="my-convert-link nav-link py-3 active"><i
+                            class="bi bi-cash-coin me-3"></i>Convert</a>
                 </li>
                 <li class="nav-item">
-                    <a (click)="router.navigate(['currency-chart'])" class="my-charts-link py-3 nav-link"><i class="bi bi-graph-down me-3"></i>Charts</a>
+                    <a (click)="router.navigate(['currency-chart'])" class="my-charts-link py-3 nav-link"><i
+                            class="bi bi-graph-down me-3"></i>Charts</a>
                 </li>
             </ul>
         </div>
@@ -82,11 +84,12 @@
                     <span style="font-size: small;">We utilize our proprietary API and data, which are manually updated
                         by our team members, hence ensuring accuracy and reliability.</span>
                 </div>
-                <div *ngIf="!rate" class="d-flex align-items-end">
-                    <button (click)="refreshComponent()" type="button" class="btn btn-primary py-2 px-5">Convert</button>
-                </div>
-                <div *ngIf="rate" class="d-flex align-items-end">
-                    <button (click)="router.navigate(['currency-chart'], {queryParams: {period: 'week', from: from.code, to: to.code}})" type="button" class="btn btn-primary py-2 px-5">View chart</button>
+                <div class="d-flex align-items-end">
+                    <button *ngIf="rate"
+                        (click)="router.navigate(['currency-chart'], {queryParams: {period: 'week', from: from.code, to: to.code}})"
+                        type="button" class="btn btn-outline-primary py-2 px-5 me-3">View chart</button>
+                    <button (click)="refreshComponent()" type="button"
+                        class="btn btn-primary py-2 px-5">Convert</button>
                 </div>
             </div>
 
