@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Chart from 'chart.js/auto';
+import { Currency } from '../../models/currency';
 
 @Component({
   selector: 'app-convert',
@@ -139,25 +140,5 @@ export class ChartComponent {
     };
 
     this.router.navigate(['currency-chart'], { queryParams });
-  }
-}
-
-class Currency {
-  id: number;
-  code: string;
-  displayName: string;
-  description: string;
-  symbol: string;
-
-  constructor(id: number, code: string, displayName: string, description: string, symbol: string) {
-    this.id = id;
-    this.code = code;
-    this.displayName = displayName;
-    this.description = description;
-    this.symbol = symbol;
-  }
-
-  getDisplay(): string {
-    return this.code + ' - ' + this.displayName;
   }
 }
