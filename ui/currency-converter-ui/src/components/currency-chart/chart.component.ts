@@ -1,7 +1,8 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-convert',
@@ -17,6 +18,8 @@ export class ChartComponent {
   from: Currency;
   to: Currency;
   showCurrencies: Currency[];
+  chart: any;
+  period: string;
 
   constructor(
     public route: ActivatedRoute,
@@ -51,6 +54,35 @@ export class ChartComponent {
     if (fromCode && toCode) {
       // this.convert();
     }
+
+    let data = [
+      { date: '2024-05-24T05:00:00', rate: 34.2343 },
+      { date: '2024-05-25T07:00:00', rate: 34.512 },
+      { date: '2024-05-25T23:00:00', rate: 34.35534 },
+      { date: '2024-05-26T07:00:00', rate: 34.2356 },
+      { date: '2024-05-26T23:00:00', rate: 34.3356 },
+      { date: '2024-05-27T07:00:00', rate: 34.201 }
+    ];
+
+    this.chart = new Chart('currency-chart', {
+      type: 'line',
+      data: {
+        labels: data.map(row => new DatePipe('en-US').transform(new Date(row.date), 'dd:MM:yyyy HH:mm:ss')),
+        datasets: [
+          {
+            label: 'Rate',
+            data: data.map(row => row.rate)
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
   }
 
   swapCurrencies() {
