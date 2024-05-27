@@ -24,29 +24,30 @@ body {
     border-radius: inherit;
 }
 
-.convert-link {
+.my-convert-link {
     border-top-left-radius: inherit;
 }
 
-.charts-link {
+.my-charts-link {
     border-top-right-radius: inherit;
 }
 
-.nav-link {
+.my-convert-link, .my-charts-link {
     background-color: var(--bs-gray-200);
     color: var(--bs-gray-700);
 }
 
-.nav-link.active {
+.my-convert-link.active, .my-charts-link.active {
     background-color: white;
     color: var(--bs-blue);
     font-weight: 600;
 }
 
-.nav-link:hover {
+.my-convert-link:hover, .my-charts-link:hover {
     opacity: 50%;
+    cursor: pointer;
 }
 
-.nav-link>.bi {
+.my-convert-link>.bi, .my-charts-link>.bi {
     color: inherit;
 }
