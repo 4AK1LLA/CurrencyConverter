@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Currency } from '../../models/currency';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-convert',
@@ -14,7 +16,7 @@ import { Currency } from '../../models/currency';
 export class ConvertComponent {
   public readonly TYPE_FROM = 1;
   public readonly TYPE_TO = 2;
-  scales = [ 1, 5, 10, 25, 50, 100, 500, 1000, 5000, 10000 ];
+  scales = [1, 5, 10, 25, 50, 100, 500, 1000, 5000, 10000];
   currencies: Currency[] = [];
   from: Currency;
   to: Currency;
@@ -24,15 +26,16 @@ export class ConvertComponent {
   rate: number;
 
   constructor(
+    private http: HttpClient,
     public route: ActivatedRoute,
-    public router: Router) { 
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    }
+    public router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit() {
     let data: any[] = this.route.snapshot.data['currencies'];
     data.forEach(c => this.currencies.push(new Currency(c.currencyId, c.code, c.displayName, c.description, c.symbol)));
-    
+
     this.showCurrencies = this.currencies;
 
     let amount = this.route.snapshot.queryParamMap.get('amount');
@@ -47,6 +50,23 @@ export class ConvertComponent {
     if (amount && fromCode && toCode) {
       this.updateRate();
     }
+  }
+
+  updateRate() {
+    if (isNaN(parseFloat(this.amountValue))) {
+      this.amount = 1;
+      this.amountValue = '1.00';
+    } else {
+      this.amount = parseFloat(this.amountValue);
+    }
+
+    const params = new HttpParams()
+      .set('fromId', this.from.id)
+      .set('toId', this.to.id)
+      .set('amount', 1);
+
+    this.http.get<number>(environment.apiUrl + '/convert', { params })
+      .subscribe(rate => this.rate = rate);
   }
 
   swapCurrencies() {
@@ -103,16 +123,5 @@ export class ConvertComponent {
     };
 
     this.router.navigate(['currency-converter'], { queryParams });
-  }
-
-  updateRate() {
-    if (isNaN(parseFloat(this.amountValue))) {
-      this.amount = 1;
-      this.amountValue = '1.00';
-    } else {
-      this.amount = parseFloat(this.amountValue);
-    }
-
-    this.rate = 34.3423563;
   }
 }
