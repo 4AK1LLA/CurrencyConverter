@@ -70,14 +70,15 @@ export class ChartComponent {
         this.rates = Object.entries(data)
           .map(([d, value]) => {
             let date = new Date(d);
-            let dateStr = new DatePipe('en-US').transform(date, 'dd:MM:yyyy HH:mm:ss') || '';
+            let dateStr = new DatePipe('en-US').transform(date, 'dd.MM.yyyy HH:mm') || '';
             return new Rate(value, date, dateStr);
           })
           .sort((a, b) => a.date.getTime() - b.date.getTime());
 
-          this.min = this.rates[0];
-          this.max = this.rates[this.rates.length - 1];
-          this.percent = ((this.max.value - this.min.value) / this.min.value) * 100;
+          let sortedByRate = this.rates.slice().sort((a, b) => a.value - b.value);
+          this.min = sortedByRate[0];
+          this.max = sortedByRate[sortedByRate.length - 1];
+          this.percent = ((this.rates[this.rates.length - 1].value - this.rates[0].value) / this.rates[0].value) * 100;
 
         this.chart = new Chart('currency-chart', {
           type: 'line',
