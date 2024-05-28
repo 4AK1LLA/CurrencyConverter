@@ -51,3 +51,24 @@ body {
 .my-convert-link>.bi, .my-charts-link>.bi {
     color: inherit;
 }
+
+.my-currency-input {
+    cursor: pointer;
+}
+
+.my-currency-input:focus {
+    cursor: text;
+}
+
+.my-dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.my-dropdown-item:hover {
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+}

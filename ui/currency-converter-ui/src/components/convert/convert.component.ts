@@ -10,8 +10,7 @@ import { environment } from '../../environments/environment';
   selector: 'app-convert',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: 'convert.component.html',
-  styleUrl: 'convert.component.css'
+  templateUrl: 'convert.component.html'
 })
 export class ConvertComponent {
   public readonly TYPE_FROM = 1;

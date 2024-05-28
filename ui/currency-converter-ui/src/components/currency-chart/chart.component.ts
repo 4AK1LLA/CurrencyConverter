@@ -12,8 +12,7 @@ import { Rate } from '../../models/rate';
   selector: 'app-convert',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: 'chart.component.html',
-  styleUrl: 'chart.component.css'
+  templateUrl: 'chart.component.html'
 })
 export class ChartComponent {
   public readonly TYPE_FROM = 1;
