@@ -13,7 +13,7 @@ builder.Services.AddDbContext<CurrencyRatesDbContext>(options =>
     bool useSql = builder.Configuration.GetValue<bool>("UseSql");
     if (useSql)
     {
-        ///
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
     }
     else
     {
